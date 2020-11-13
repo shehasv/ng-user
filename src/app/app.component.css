@@ -4,3 +4,6 @@
 span{
     padding-right: 1rem;
 }
+button{
+    outline: none;
+}
