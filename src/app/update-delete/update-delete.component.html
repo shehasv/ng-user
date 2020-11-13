@@ -1,1 +1,58 @@
-<p>update-delete works!</p>
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Update">
+        <div class="container-fluid">
+            <h2>Update User</h2>
+            <div class="container-fluid">
+                <form [formGroup]="updateForm" (ngSubmit)="update()">
+                    <div class="form-group">
+                      <label>ID</label>
+                      <input [class.is-invalid]="id.invalid 
+                      && id.touched " formControlName="id" type="text" class="form-control">
+                      <div *ngIf="id.invalid && updateForm.get('id').touched ">
+                        <small *ngIf="id.errors?.required" class="text-danger">id is required</small>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text"  formControlName="firstName" class="form-control">
+                        <div *ngIf="firstName.invalid && updateForm.get('firstName').touched ">
+                            <small *ngIf="firstName.errors?.required" class="text-danger">First Name is required</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input formControlName="lastName" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text"  formControlName="email" class="form-control">
+                        <div *ngIf="email.invalid && updateForm.get('email').touched ">
+                            <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label>Age</label>
+                        <input formControlName="age" type="number" class="form-control">
+                      </div>
+                    <button [disabled]="!updateForm.valid" class="btn btn-primary" type="submit">Delete</button>
+                  </form>
+            </div>
+          </div>
+    </mat-tab>
+    <mat-tab label="Delete">
+        <div class="container-fluid">
+            <h2>Delete</h2>
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label>ID</label>
+                <input [class.is-invalid]="idDel.invalid 
+                && idDel.touched " formControlName="idDel" type="text" class="form-control">
+                <div *ngIf="idDel.invalid && registrationForm.get('idDel').touched ">
+                  <small *ngIf="idDel.errors?.required" class="text-danger">id is required</small>
+                </div>
+              </div>
+              <button [disabled]="!registrationForm.valid" class="btn btn-primary" type="submit">Delete</button>
+            </form>
+          </div>
+    </mat-tab>
+</mat-tab-group>

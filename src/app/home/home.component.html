@@ -1,6 +1,6 @@
 <div>
-    <h2>User List</h2>
+    <button mat-stroked-button color="primary" (click)="onClick()">Get Users List</button>
     <ul *ngFor="let user of users">
-        <li>{{user.email}}</li>
+        <li>{{user.fName}}  {{user.lName}}  {{user.email}} {{user.age}}  </li>
     </ul>
 </div>

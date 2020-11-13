@@ -33,6 +33,7 @@ export class AddUserComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(){
+    console.log(this.registrationForm.value)
     this._registrationService.register(this.registrationForm.value)
       .subscribe(
         response => console.log("success",response),
