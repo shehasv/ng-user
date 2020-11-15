@@ -53,6 +53,7 @@ export class UpdateDeleteComponent implements OnInit {
         response => console.log("success",response),
         error => console.log("error!",error)
       );
+      this.registrationForm.reset();
   }
   update(){
     this._registrationService.update(this.updateForm.value)
@@ -60,6 +61,7 @@ export class UpdateDeleteComponent implements OnInit {
         response => console.log("success",response),
         error => console.log("error!",error)
       );
+      this.updateForm.reset();
   }
 
 }

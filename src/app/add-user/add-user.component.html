@@ -1,11 +1,11 @@
-<div class="container-fluid">
+<div class="container-fluid" class="div-container">
     <h2>Add User</h2>
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label>First Name</label>
         <input [class.is-invalid]="firstName.invalid 
         && firstName.touched " formControlName="firstName" type="text" class="form-control">
-        <div *ngIf="firstName.invalid && registrationForm.get('firstName').touched ">
+        <div *ngIf="firstName.invalid && firstName.touched ">
           <small *ngIf="firstName.errors?.required" class="text-danger">First Name is required</small>
         </div>
       </div>
@@ -17,13 +17,18 @@
         <label>Email</label>
         <input [class.is-invalid]="email.invalid 
         && email.touched " formControlName="email" type="text" class="form-control">
-        <div *ngIf="email.invalid && registrationForm.get('email').touched ">
+        <div *ngIf="email.invalid && email.touched ">
           <small *ngIf="email.errors?.required" class="text-danger">email is required</small>
+          <small *ngIf="email.errors?.email" class="text-danger">enter valid email address</small>
         </div>
       </div>
       <div class="form-group">
         <label>Age</label>
-        <input formControlName="age" type="number" class="form-control">
+        <input [class.is-invalid]="age.invalid && age.touched " formControlName="age" type="number" class="form-control">
+        <div *ngIf="age.invalid && age.touched">
+          <small *ngIf="age.errors?.required" class="text-danger">age is required</small>
+          <small *ngIf="age.errors?.min || age.errors?.max" class="text-danger">age should be between 21 and 60</small>
+        </div>
       </div>
       <button [disabled]="!registrationForm.valid" class="btn btn-primary" type="submit">Register</button>
     </form>

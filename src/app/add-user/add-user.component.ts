@@ -26,8 +26,8 @@ export class AddUserComponent implements OnInit {
   registrationForm = this.fb.group({
     firstName: ['',[Validators.required]],
     lastName: [''],
-    email: ['',[Validators.required]],
-    age : ['']
+    email: ['',[Validators.required,Validators.email]],
+    age : ['',[Validators.required,Validators.min(21),Validators.max(60)]]
   })
 
   ngOnInit(): void {
@@ -39,6 +39,7 @@ export class AddUserComponent implements OnInit {
         response => console.log("success",response),
         error => console.log("error!",error)
       );
+    this.registrationForm.reset();
   }
 
 }

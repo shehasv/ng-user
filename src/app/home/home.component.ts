@@ -10,7 +10,7 @@ import { UsersService } from '../users.service';
 export class HomeComponent implements OnInit {
 
   public users = [];
-
+  public errorMessage = '';
 
   constructor(private _userService: UsersService) { }
 
@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
   onClick(){
     this._userService.getUsers()
       .subscribe(data => {
-        // console.log(data)
         this.users = data
         })
   }
