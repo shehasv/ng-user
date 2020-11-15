@@ -1,9 +1,11 @@
 <div>
     <button mat-stroked-button color="primary" (click)="onClick()">Get Users List</button>
-    <ul *ngFor="let user of users">
-        <li>{{user.fName}}  {{user.lName}}  {{user.email}} {{user.age}}  </li>
-    </ul>
-    <h2>
-        {{errorMessage}}
-    </h2>
+    <h2 *ngIf=" count === '0' ">No Users Found!</h2>
+    <mat-list>
+        <mat-divider></mat-divider>
+        <div *ngFor="let user of users">
+            <mat-list-item>{{user.fName+"   "}} {{user.lName+"  "}} {{user.email+"    "}}{{user.age}}</mat-list-item>
+            <mat-divider></mat-divider>    
+        </div>
+    </mat-list>
 </div>

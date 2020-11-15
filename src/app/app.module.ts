@@ -12,6 +12,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from '@angular/common/http'
 import {ReactiveFormsModule} from '@angular/forms'
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatListModule} from '@angular/material/list';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 
 @NgModule({
@@ -30,7 +33,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatButtonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatListModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

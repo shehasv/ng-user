@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
 
   public users = [];
   public errorMessage = '';
+  public count = '';
 
   constructor(private _userService: UsersService) { }
 
@@ -21,6 +22,10 @@ export class HomeComponent implements OnInit {
     this._userService.getUsers()
       .subscribe(data => {
         this.users = data
+        console.log(data)
+        if(data.length <=0 ){
+          this.count = '0'
+        }
         })
   }
 
