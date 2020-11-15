@@ -33,6 +33,11 @@ export class AddUserComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(){
+    if(this.registrationForm.value.lastName===''){
+      this.registrationForm.patchValue({
+        lastName: 'NA'
+      })
+    }
     console.log(this.registrationForm.value)
     this._registrationService.register(this.registrationForm.value)
       .subscribe(
@@ -40,6 +45,19 @@ export class AddUserComponent implements OnInit {
         error => console.log("error!",error)
       );
     this.registrationForm.reset();
+  }
+  public emailAlredyExist:boolean = false;
+  emailCheck(){
+    this._registrationService.emailCheckUnique(this.registrationForm.value.email)
+      .subscribe(res => {
+        console.log(res)
+        if (res === null) {
+          this.emailAlredyExist = false;
+        }
+        else{
+          this.emailAlredyExist = true;
+        }
+    });
   }
 
 }

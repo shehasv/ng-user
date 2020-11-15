@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,Validators} from '@angular/forms';
 import {RegistrationService} from '../registration.service'
+import { user } from '../user';
 
 @Component({
   selector: 'app-update-delete',
@@ -30,6 +31,7 @@ export class UpdateDeleteComponent implements OnInit {
     return this.registrationForm.get('idDel')
   }
 
+
   constructor(private fb:FormBuilder,private _registrationService: RegistrationService) { }
   updateForm = this.fb.group({
     id: ['',[Validators.required]],
@@ -54,6 +56,19 @@ export class UpdateDeleteComponent implements OnInit {
         error => console.log("error!",error)
       );
       this.registrationForm.reset();
+  }
+  getDetails(){
+    this._registrationService.getDetail(this.updateForm.value)
+      .subscribe(
+        data => {
+          this.updateForm.patchValue({
+            firstName : data.fName,
+            lastName: data.lName,
+            email: data.email,
+            age: data.age
+          })
+        }
+      )
   }
   update(){
     this._registrationService.update(this.updateForm.value)

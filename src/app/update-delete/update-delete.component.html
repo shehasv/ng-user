@@ -11,6 +11,9 @@
                       <div *ngIf="id.invalid && updateForm.get('id').touched ">
                         <small *ngIf="id.errors?.required" class="text-danger">id is required</small>
                       </div>
+                      <div>
+                        <button style="margin-top: 1%;" [disabled]="updateForm.get('id').invalid" type="button" class="btn btn-primary" (click)="getDetails()">Get Details</button>
+                      </div>
                     </div>
                     <div class="form-group">
                         <label>First Name</label>
