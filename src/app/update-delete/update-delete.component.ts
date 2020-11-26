@@ -47,17 +47,6 @@ export class UpdateDeleteComponent implements OnInit {
   })
 
   ngOnInit(): void {
-  }
-  onSubmit(){
-    console.log(this.registrationForm.value)
-    this._registrationService.delete(this.registrationForm.value)
-      .subscribe(
-        response => console.log("success",response),
-        error => console.log("error!",error)
-      );
-      this.registrationForm.reset();
-  }
-  getDetails(){
     this._registrationService.getDetail(this.updateForm.value)
       .subscribe(
         data => {
@@ -69,6 +58,18 @@ export class UpdateDeleteComponent implements OnInit {
           })
         }
       )
+  }
+  onSubmit(){
+    console.log(this.registrationForm.value)
+    this._registrationService.delete(this.registrationForm.value)
+      .subscribe(
+        response => console.log("success",response),
+        error => console.log("error!",error)
+      );
+      this.registrationForm.reset();
+  }
+  getDetails(){
+    
   }
   update(){
     this._registrationService.update(this.updateForm.value)

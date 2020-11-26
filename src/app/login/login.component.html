@@ -1,0 +1,33 @@
+<div class="login-container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+              <input [class.is-invalid]="email.invalid 
+              && email.touched "formControlName="email" type="email" class="form-control" placeholder="Email" (ngModelChange)="onChange()">       
+              <div *ngIf="email.invalid && email.touched">
+                <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
+                <small *ngIf="email.errors?.email" class="text-danger">Enter valid email id</small>
+              </div>
+        </div>
+          
+          <div class="form-group">
+            <input [class.is-invalid]="password.invalid 
+            && password.touched "formControlName="password" type="password" class="form-control" placeholder="Password" (ngModelChange)="onChange()">       
+            <div *ngIf="password.invalid && password.touched">
+                <small *ngIf="password.errors?.required" class="text-danger">Password is required</small>
+            </div>
+        </div>
+        <div>
+            <a routerLink='/reset'>forgot password?</a>
+        </div>
+        <br>
+          <div class="field">
+              <button [disabled]="!loginForm.valid" class="button is-success">
+                Login
+              </button>
+          </div>
+          <div class="fail-msg">
+            <h3 *ngIf="failed" class="text-danger">Invalid User Credentials!</h3>
+            <h3 *ngIf="wrongPass" class="text-danger">Incorrect Password</h3>
+        </div>
+    </form>
+</div>

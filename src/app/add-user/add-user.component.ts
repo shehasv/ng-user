@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,Validators} from '@angular/forms';
-import {RegistrationService} from '../registration.service'
+import {RegistrationService} from '../registration.service';
+import { ConfirmedValidator } from '../confirmed.validator';
 
 @Component({
   selector: 'app-add-user',
@@ -18,8 +19,25 @@ export class AddUserComponent implements OnInit {
   get email(){
     return this.registrationForm.get('email')
   }
+
+  get password(){
+    return this.registrationForm.get('password');
+  } 
+
+  get confirmPassword(){
+    return this.registrationForm.get('confirmPassword')
+  }
+
   get age(){
     return this.registrationForm.get('age')
+  }
+
+  get question(){
+    return this.registrationForm.get('question')
+  }
+
+  get answer(){
+    return this.registrationForm.get('answer')
   }
 
   constructor(private fb:FormBuilder,private _registrationService: RegistrationService) { }
@@ -27,7 +45,13 @@ export class AddUserComponent implements OnInit {
     firstName: ['',[Validators.required]],
     lastName: [''],
     email: ['',[Validators.required,Validators.email]],
+    password: ['',[Validators.required,Validators.minLength(8)]],
+    confirmPassword: ['',[Validators.required,Validators.minLength(8)]],
+    question: ['',[Validators.required]],
+    answer: ['',[Validators.required,Validators.minLength(3)]],
     age : ['',[Validators.required,Validators.min(21),Validators.max(60)]]
+  },{
+    validator: ConfirmedValidator('password', 'confirmPassword')
   })
 
   ngOnInit(): void {

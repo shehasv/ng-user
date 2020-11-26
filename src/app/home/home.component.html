@@ -1,11 +1,56 @@
+<app-header></app-header>
 <div>
     <button mat-stroked-button color="primary" (click)="onClick()">Get Users List</button>
     <h2 *ngIf=" count === '0' ">No Users Found!</h2>
     <mat-list>
         <mat-divider></mat-divider>
         <div *ngFor="let user of users">
-            <mat-list-item>{{user.fName+"   "}} {{user.lName+"  "}} {{user.email+"    "}}{{user.age}}</mat-list-item>
+            <mat-list-item>
+                {{user.fName+"   "}} {{user.lName+"  "}} {{user.email+"    "}}{{user.age}}
+                <button class="button btn-primary" (click)="show(user._id)" data-toggle="modal" data-target="#myModal">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+            </mat-list-item>
             <mat-divider></mat-divider>    
         </div>
     </mat-list>
+
+    <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h2 class="modal-title" id="myModalLabel">Update User</h2>
+                </div>
+                <div class="container-fluid">
+                        <form [formGroup]="updateForm" (ngSubmit)="update()">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text"  formControlName="firstName" class="form-control">
+                                <div *ngIf="firstName.invalid && updateForm.get('firstName').touched ">
+                                    <small *ngIf="firstName.errors?.required" class="text-danger">First Name is required</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input formControlName="lastName" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text"  formControlName="email" class="form-control">
+                                <div *ngIf="email.invalid && updateForm.get('email').touched ">
+                                    <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
+                                </div>
+                            </div>
+                              <div class="form-group">
+                                <label>Age</label>
+                                <input formControlName="age" type="number" class="form-control">
+                              </div>
+                            <button [disabled]="!updateForm.valid" class="btn btn-success" type="submit">Update</button>
+                          </form>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal" (click) = "hide()">Close</button>
+                </div>
+        </div>
+    </div>
+
 </div>

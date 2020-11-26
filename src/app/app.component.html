@@ -1,4 +1,4 @@
-<mat-toolbar class="navbar" color="primary">
+<!-- <mat-toolbar class="navbar" color="primary">
   <div>
     User App
   </div>
@@ -6,6 +6,24 @@
     <span><button mat-button routerLink="/userList">User List</button></span>
     <span><button mat-button routerLink="/userAdd">Add User</button></span>
     <span><button mat-button routerLink="/update">Delete/Update</button></span>
+    <span><button mat-button (click)="show()">Login</button></span>
   </div>
-</mat-toolbar>
-<router-outlet></router-outlet>
+</mat-toolbar> -->
+<router-outlet>
+  
+</router-outlet>
+<app-df-messenger></app-df-messenger>
+<!-- <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h2 class="modal-title" id="myModalLabel">Login</h2>
+          </div>
+          <div class="container-fluid">
+                  <app-login></app-login>
+              </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal" (click) = "hide()">Close</button>
+          </div>
+  </div>
+</div> -->

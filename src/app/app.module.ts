@@ -14,6 +14,12 @@ import {ReactiveFormsModule} from '@angular/forms'
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatIconModule} from '@angular/material/icon';
+import { LoginComponent } from './login/login.component';
+import { ResetComponent } from './reset/reset.component';
+import { PassChangeComponent } from './pass-change/pass-change.component';
+import { HeaderComponent } from './header/header.component';
+import { DfMessengerComponent } from './df-messenger/df-messenger.component';
 
 
 
@@ -24,6 +30,11 @@ import {MatDividerModule} from '@angular/material/divider';
     HomeComponent,
     AddUserComponent,
     UpdateDeleteComponent,
+    LoginComponent,
+    ResetComponent,
+    PassChangeComponent,
+    HeaderComponent,
+    DfMessengerComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +46,8 @@ import {MatDividerModule} from '@angular/material/divider';
     ReactiveFormsModule,
     MatTabsModule,
     MatListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

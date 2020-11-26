@@ -8,7 +8,11 @@ import { user } from './user';
 export class RegistrationService {
   _url = "http://localhost:9000/users";
   get_url = "http://localhost:9000/user";
-  checkMail = "http://localhost:9000/mail"
+  checkMail = "http://localhost:9000/mail";
+  loginUrl = "http://localhost:9000/login";
+  resetUrl = "http://localhost:9000/reset";
+  updatePassurl = "http://localhost:9000/updatePass";
+  
   constructor(private _http: HttpClient) { }
   register(userData){
     return this._http.post<user>(this._url,userData);
@@ -30,4 +34,17 @@ export class RegistrationService {
     // console.log(this.checkMail+`?mail=${email}`)
     return this._http.get(this.checkMail+`?mail=${email}`)
   }
+
+  login(data){
+    return this._http.post<{msg:string,id:string}>(this.loginUrl,data);
+  }
+
+  reset(data){
+    return this._http.post<{msg:string,email:string}>(this.resetUrl,data);
+  }
+
+  updatePassword(data){
+    return this._http.patch(this.updatePassurl,data);
+  }
+
 }

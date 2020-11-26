@@ -7,4 +7,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'user';
+  
+
+
+  showModal: boolean;
+  show()
+  {
+    this.showModal = true; // Show-Hide Modal Check
+    
+  }
+  //Bootstrap Modal Close event
+  hide()
+  {
+    this.showModal = false;
+  }
+
 }
+
