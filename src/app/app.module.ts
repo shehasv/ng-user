@@ -20,6 +20,7 @@ import { ResetComponent } from './reset/reset.component';
 import { PassChangeComponent } from './pass-change/pass-change.component';
 import { HeaderComponent } from './header/header.component';
 import { DfMessengerComponent } from './df-messenger/df-messenger.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 
 
 
@@ -35,6 +36,7 @@ import { DfMessengerComponent } from './df-messenger/df-messenger.component';
     PassChangeComponent,
     HeaderComponent,
     DfMessengerComponent,
+    EmailVerificationComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,9 +6,11 @@ import { UpdateDeleteComponent } from './update-delete/update-delete.component';
 import { LoginComponent } from './login/login.component';
 import { ResetComponent } from './reset/reset.component';
 import { PassChangeComponent } from './pass-change/pass-change.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 const routes: Routes = [
   {path:'',redirectTo:'userList',pathMatch:'full'},
   {path:'login',component:LoginComponent},
+  {path:'email',component:EmailVerificationComponent},
   {path:'reset',component:ResetComponent},
   {path:'change',component:PassChangeComponent},
   {path:'userList',component: HomeComponent},
